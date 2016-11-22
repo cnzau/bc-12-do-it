@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>My Boards</h1>
+    {% for board in boards %}
+    <div> {{ board.creator.id }} </br> {{ board.title }} </div>
+    {% endfor %}
+{% endblock %}

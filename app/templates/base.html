@@ -1,0 +1,20 @@
+<html>
+
+<head>
+    {% if title %}
+        <title>{{ title }} | Do IT</title>
+    {% else %}
+        <title>Welcome to Do IT</title>
+    {% endif %}
+</head>
+
+<body>
+<div style="display: inline;">
+    <div style="float: left;">Do IT: <a href="/index">Home</a></div>
+    <div style="float: right;"><h1>Hello, {{ user.username }}!</h1></div>
+    <hr style="clear: both;">
+    </div>
+    {% block content %}{% endblock %}
+</body>
+
+</html>
