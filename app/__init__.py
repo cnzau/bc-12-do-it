@@ -16,3 +16,9 @@ login_manager.init_app(app)
 
 #  Development environment
 app.config.from_object('config')
+
+
+# Create the sqlalchemy object
+db = SQLAlchemy(app)
+
+from app import views, models
