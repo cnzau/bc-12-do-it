@@ -11,10 +11,10 @@ class User(db.Model):
                          unique=True, nullable=False)
     email = db.Column(db.String(120), index=True, unique=True, nullable=False)
     password = db.Column(db.String, nullable=False)
-    boards = db.relationship('Board', backref='creator', lazy='dynamic')
-    lists = db.relationship('List', backref='creator', lazy='dynamic')
-    cards = db.relationship('Card', backref='creator', lazy='dynamic')
-    items = db.relationship('Card', backref='creator', lazy='dynamic')
+    boards = db.relationship('Board', backref='b_creator', lazy='dynamic')
+    lists = db.relationship('List', backref='l_creator', lazy='dynamic')
+    cards = db.relationship('Card', backref='c_creator', lazy='dynamic')
+    items = db.relationship('Card', backref='i_creator', lazy='dynamic')
 
     def __init__(self, username, email, password):
         self.username = username
