@@ -11,7 +11,11 @@
 <body>
 <div style="display: inline;">
     <div style="float: left;">Do IT: <a href="/index">Home</a></div>
-    <div style="float: right;"><h1>Hello, {{ user.username }}!</h1></div>
+    <div style="float: right;">
+    {% if current_user.is_authenticated %}
+          <b>{{ current_user.username }}</b> <a  href="{{ url_for('logout') }}">LOG OUT</a>
+    {% endif %}
+    </div>
     <hr style="clear: both;">
     </div>
     {% block content %}{% endblock %}
