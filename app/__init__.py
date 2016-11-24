@@ -22,3 +22,13 @@ app.config.from_object('config')
 db = SQLAlchemy(app)
 
 from app import views, models
+
+from models import User
+
+login_manager.login_view = "login"
+
+
+# Load user from database and store user_id as the session
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.filter(User.id == int(user_id)).first()
