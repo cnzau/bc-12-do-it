@@ -1,15 +1,19 @@
 from flask import render_template, flash, request, redirect, url_for, session
 from flask_oauth import OAuth
 from app import app
-from app import db
-from models import User, bcrypt
-from forms import LoginForm, SignupForm
+from app import db, models
+from models import User, Board, bcrypt
+from forms import LoginForm, SignupForm, BoardForm
 from flask_login import login_user, login_required, logout_user, current_user
 
 
 @app.route('/', methods=['GET'])
 def index():
-    return render_template('index.html')
+    boards = Board.query.filter_by(user_id=current_user.id)
+    all_boards = 0
+    for i in boards:
+        all_boards += 1
+    return render_template('index.html', boards=boards, all_boards=all_boards)
 
 
 @app.route('/login', methods=['GET', 'POST'])

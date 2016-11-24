@@ -1,7 +1,15 @@
 {% extends "base.html" %}
 {% block content %}
     <h1>My Boards</h1>
-    {% for board in boards %}
-    <div> {{ board.creator.id }} </br> {{ board.title }} </div>
-    {% endfor %}
+    <a href="">Create New Board</a>
+    {% if all_boards == 0 %}
+        <div>
+            <p>You have no boards.</p>
+        </div>
+    {% else %}
+        {% for board in boards %}
+            <div class="board"> {{ board.id }} {{ board.title }} </div>
+        {% endfor %}
+    {% endif %}
+
 {% endblock %}
