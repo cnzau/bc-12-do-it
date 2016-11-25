@@ -52,6 +52,9 @@ class List(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(64), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    def __init__(self, name, user_id):
+        self.name = name
+        self.user_id = user_id
 
     def __repr__(self):
         return '<List %r>' % (self.id)
