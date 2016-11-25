@@ -1,14 +1,14 @@
 {% extends "base.html" %}
 {% block content %}
-    <h1>My Boards</h1>
-    <a href="">Create New Board</a>
-    {% if all_boards == 0 %}
+    <h1>My Lists</h1>
+    <a href="{{ url_for('create_list') }}">Create New List</a>
+    {% if all_lists == 0 %}
         <div>
-            <p>You have no boards.</p>
+            <p>You have no lists.</p>
         </div>
     {% else %}
-        {% for board in boards %}
-            <div class="board"> {{ board.id }} {{ board.title }} </div>
+        {% for list in lists %}
+            <a href="/list/{{ list.id }}"><div class="list"> {{ list.name }} </div></a>
         {% endfor %}
     {% endif %}
 

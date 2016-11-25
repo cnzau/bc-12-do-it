@@ -42,3 +42,18 @@ class BoardForm(Form):
     """
     board_title = StringField("Title: ", validators=[Length(min=1, message="Title is too short")])
     submit = SubmitField("Add Board")
+
+class ListForm(Form):
+    """
+    Creates a list form structure
+    """
+    list_name = StringField("Name: ", validators=[Length(min=1, message="Title is too short")])
+    submit = SubmitField("Add List")
+
+class CardForm(Form):
+    """
+    Creates a card form structure
+    """
+    card_name = StringField("Name: ", validators=[Length(min=1, message="Title is too short")])
+    card_name = StringField("Name: ", validators=[Length(min=1, message="Title is too short")])
+    submit = SubmitField("Add List")
