@@ -8,6 +8,7 @@ from flask_login import login_user, login_required, logout_user, current_user
 
 
 @app.route('/', methods=['GET'])
+@login_required
 def index():
     lists = List.query.filter_by(user_id=current_user.id)
     all_lists = 0
@@ -16,6 +17,7 @@ def index():
     return render_template('index.html', lists=lists, all_lists=all_lists)
 
 @app.route('/lists/create', methods=['GET', 'POST'])
+@login_required
 def create_list():
     form = ListForm()
     if request.method == "POST":
@@ -30,6 +32,7 @@ def create_list():
     return render_template('list_c.html', form=form)
 
 @app.route('/list/<l_id>', methods=['GET'])
+@login_required
 def cards(l_id):
     cards = Card.query.filter_by(user_id=current_user.id, list_id=l_id)
     all_cards = 0
