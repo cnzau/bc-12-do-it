@@ -11,3 +11,11 @@ Todo List Application done with python flask
   * Several todo items
     - A user should be able to mark todo items as done
     - A user can also undo done tasks
+
+## Installation
+1. Clone the repo
+2. Create your virtual environment
+3. Run the below to set up database
+  - ```python db_create.db```
+  - ```python db_migrate.db```
+  - ```python run.py```
