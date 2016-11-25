@@ -11,7 +11,6 @@ class User(db.Model):
                          unique=True, nullable=False)
     email = db.Column(db.String(120), index=True, unique=True, nullable=False)
     password = db.Column(db.String, nullable=False)
-    boards = db.relationship('Board', backref='b_creator', lazy='dynamic')
     lists = db.relationship('List', backref='l_creator', lazy='dynamic')
     cards = db.relationship('Card', backref='c_creator', lazy='dynamic')
     items = db.relationship('Card', backref='i_creator', lazy='dynamic')
@@ -52,7 +51,6 @@ class List(db.Model):
     __tablename__ = 'lists'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(64), nullable=False)
-    board_id = db.Column(db.Integer, db.ForeignKey('boards.id'))
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
     def __repr__(self):
